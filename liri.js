@@ -96,9 +96,9 @@ function commandPrompt(title){
         case commands[2]:{
             axios.get("http://www.omdbapi.com/?t=" + title + "&y=&plot=short&apikey=trilogy").then(
             function(response) {
-            console.log("Title of the movie: " + response.data.Title + "\nYear the movie came out: " + response.data.Year + "\nIMDB Rating of the movie: " + response.data.imdbRating + "\nRotten Tomatoes Rating of the movie: " + response.data.ratings + "\nCountry where the movie was Produced: " + response.data.Country + "\nLanguage of the movie: " + response.data.Language + "\nPlot of the movie: " + response.data.Plot + "\nActors in the movie: " + response.data.Actors);
-  }
-);
+                printMovie(response.data);
+                }
+            );
             break;
         }
         case commands[3]:{
@@ -114,7 +114,7 @@ function commandPrompt(title){
 }
 
 function printMovie(movieObject){
-
+    console.log("Title of the movie: " + movieObject.Title + "\nYear the movie came out: " + movieObject.Year + "\nIMDB Rating of the movie: " + movieObject.imdbRating + "\nRotten Tomatoes Rating of the movie: " + movieObject.ratings + "\nCountry where the movie was Produced: " + movieObject.Country + "\nLanguage of the movie: " + movieObject.Language + "\nPlot of the movie: " + movieObject.Plot + "\nActors in the movie: " + movieObject.Actors);
 }
 
 function printSong(songObject){
