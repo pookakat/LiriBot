@@ -5,24 +5,28 @@ var axios = require("axios");
 var spotify = new Spotify(keys.spotify);
 var moment = require("moment");
 var nextThing = "";
-if (process.argv.length>3){
-    for (i=3; i<process.argv.length; i++){
-      nextThing = nextThing + process.argv[i] + " ";
+function getTitle(){
+    if (process.argv.length>3){
+        for (i=3; i<process.argv.length; i++){
+        nextThing = nextThing + process.argv[i] + " ";
+        }
     }
-  }
-  else{
-    nextThing = process.argv[3];
-    nextThing = nextThing;
-  }
+    else{
+        nextThing = process.argv[3];
+        nextThing = nextThing;
+    }
+    nextThing = nextThing.trimEnd();
+}
+
 commands = ['concert-this', 'spotify-this-song', 'movie-this', 'do-what-it-says', 'moo'];
 
 function commandPrompt(title){
     var doThis = process.argv[2];
-    title = title.trimEnd();
     switch (doThis) {
         case commands[0]:{
-            console.log(commands[0]);
-            console.log(title);
+            if (process.argv.length<=3){
+                title = "The";
+            }
             axios.get("https://rest.bandsintown.com/artists/" + title + "/events?app_id=18982016-4489-49ce-9678-32dce1606300&date=upcoming").then(function(response) {
                 for (var i = 0; i<response.data.length; i++){
                     console.log("Name of the Venue: " + response.data[i].venue.name + "\nVenue Location: " + response.data[i].venue.city + ", " + response.data[i].venue.region + "\nDate of Event: " + moment(response.data[i].datetime).format("MM-DD-YYYY"));
@@ -32,8 +36,15 @@ function commandPrompt(title){
         }
         case commands[1]:{
             console.log(commands[1]);
+            spotify.search({ type: 'track', query: title })
+            .then(function(response) {
+              console.log(response.tracks.items[0]);
+            })
+            .catch(function(err) {
+              console.log(err);
+            });
             break;
-        }
+        };
         case commands[2]:{
             if (process.argv.length<=3){
                 title = "Mr. Nobody";
@@ -56,4 +67,5 @@ function commandPrompt(title){
         }
     }
 }
+nextThing = getTitle();
 commandPrompt(nextThing);
