@@ -1,12 +1,16 @@
+//require stuff
 require("dotenv").config();
 var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var axios = require("axios");
-var spotify = new Spotify(keys.spotify);
 var moment = require("moment");
+var fs = require('file-system');
+//other global variables
+var spotify = new Spotify(keys.spotify);
 var title = "";
 var doThis = process.argv[2];
 
+//figure out how to process the command line stuff
 function getTitle(){
     var nextThing = "";
     if (process.argv.length<4){
@@ -57,6 +61,7 @@ function direction(userQuery){
     commandPrompt(useThis);
 } 
 
+//now that this is done, let's make it act accordingly
 
 commands = ['concert-this', 'spotify-this-song', 'movie-this', 'do-what-it-says', 'moo'];
 
@@ -113,6 +118,8 @@ function commandPrompt(title){
     }
 }
 
+//printing functions
+
 function printMovie(movieObject){
     console.log("Title of the movie: " + movieObject.Title + "\nYear the movie came out: " + movieObject.Year + "\nIMDB Rating of the movie: " + movieObject.imdbRating + "\nRotten Tomatoes Rating of the movie: " + movieObject.ratings + "\nCountry where the movie was Produced: " + movieObject.Country + "\nLanguage of the movie: " + movieObject.Language + "\nPlot of the movie: " + movieObject.Plot + "\nActors in the movie: " + movieObject.Actors);
 }
@@ -121,6 +128,8 @@ function printSong(songObject){
     var artists = getArtists(songObject.artists);
     console.log('Artists: '+ artists + "\nSong's Name: " + songObject.name +'\nPreview Link from Spotify: ' + songObject.external_urls.spotify + '\nAlbum: ' + songObject.album.name);
 }
+
+//process what the api's are returning
 
 function getArtists(artistArray){
     var artists=artistArray[0].name;
