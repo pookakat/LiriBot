@@ -1,0 +1,60 @@
+mooJust a mooCommand - moo additional parameter -Just a moo
+Command - moo
+Additional Parameter -Just a moo
+Command - movie-this
+Additional Parameter -Mr. Nobody
+Command - movie-this
+Additional Parameter -Mr. Nobody
+undefined: undefined
+Command - movie-this
+Additional Parameter -Mr. Nobody
+Movie: undefined
+Command - movie-this
+Additional Parameter -shining time
+Movie: undefined
+Command - movie-this
+Additional Parameter -shining time
+Movie: Title of the movie: Shining Time Station
+Year the movie came out: 1989–1993
+IMDB Rating of the movie: 8.0
+Rotten Tomatoes Rating of the movie: undefined
+Country where the movie was Produced: USA, Canada, UK
+Language of the movie: English
+Plot of the movie: An American version of the popular British children's program. Every episode, the kids (and sometimes the adults, too) at Shining Time Station learn some special lessons about life and ...
+Actors in the movie: Didi Conn, Brian Edward O'Connor, Alan Semok, Olga Felgemacher
+Command - moo
+Additional Parameter -Just a moo
+Cow sanity check!: You have no cows!
+Command - spotify-this-song
+Additional Parameter -The Sign
+Song: undefined
+Command - spotify-this-song
+Additional Parameter -The Sign
+Song: undefined
+Command - spotify-this-song
+Additional Parameter -The Sign
+Song: 
+Command - spotify-this-song
+Additional Parameter -The Sign
+Song: 
+Song: Artist(s): Ace of Base
+Song's Name: The Sign
+Preview Link from Spotify: https://open.spotify.com/track/0hrBpAOgrt8RXigk83LLNE
+Album: The Sign (US Album) [Remastered]
+Song: Artist(s): Ace of Base
+Song's Name: All That She Wants
+Preview Link from Spotify: https://open.spotify.com/track/6kWJvPfC4DgUpRsXKNa9z9
+Album: The Sign (US Album) [Remastered]
+Command - spotify-this-song
+Additional Parameter -Eye of the Tiger
+Song: Artist(s): Survivor
+Song's Name: Eye of the Tiger
+Preview Link from Spotify: https://open.spotify.com/track/2KH16WveTQWT6KOG9Rg6e2
+Album: Rocky IV
+Command - spotify-this-song
+Additional Parameter -Eye of the Tiger
+Song: Artist(s): Survivor
+Song's Name: Eye of the Tiger
+Preview Link from Spotify: https://open.spotify.com/track/2KH16WveTQWT6KOG9Rg6e2
+Album: Rocky IV
+=================
