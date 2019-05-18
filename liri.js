@@ -72,7 +72,6 @@ function commandPrompt(title){
             break;
         }
         case commands[1]:{
-            console.log(commands[1]);
                 spotify.search({ type: 'track', query: title})
                 .then(
                     function(response) {
@@ -114,15 +113,19 @@ function commandPrompt(title){
     }
 }
 
+function printMovie(movieObject){
+
+}
+
 function printSong(songObject){
     var artists = getArtists(songObject.artists);
     console.log('Artists: '+ artists + "\nSong's Name: " + songObject.name +'\nPreview Link from Spotify: ' + songObject.external_urls.spotify + '\nAlbum: ' + songObject.album.name);
 }
 
 function getArtists(artistArray){
-    var artists=[];
-    for (var i = 0; i<artistArray.length; i++){
-        artists.push(artistArray[i].name);
+    var artists=artistArray[0].name;
+    for (var i = 1; i<artistArray.length; i++){
+        artists = artists + ", " + artistArray[i].name;
     }
     return artists;
 }
