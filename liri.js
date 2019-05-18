@@ -121,11 +121,11 @@ function commandPrompt(title){
             break;
         }
         case commands[3]:{
-            console.log(commands[3]);
-           
-            fs.copyFile('random.txt', foo);
-            console.log(foo);
-            break;
+           var theRandomThings = fs.readFile("random.txt", "utf-8", function(err, things){
+               console.log(things);
+                theRandomThings = things.toString();
+           });
+           console.log(theRandomThings);
         }
         case commands[4]:{
             toDo = 'Cow sanity check!'

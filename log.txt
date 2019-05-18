@@ -58,3 +58,33 @@ Song's Name: Eye of the Tiger
 Preview Link from Spotify: https://open.spotify.com/track/2KH16WveTQWT6KOG9Rg6e2
 Album: Rocky IV
 =================
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
+Command - do-what-it-says
+Additional Parameter -
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
+Command - do-what-it-says
+Additional Parameter -
+Cow sanity check!: You have no cows!
+=================
