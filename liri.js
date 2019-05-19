@@ -54,12 +54,13 @@ function direction(userQuery){
             break;
         };
         case commands[3]:{
-            useThis = "";
+            useThis = "None";
             break;
         };
         case commands[4]:{
-            useThis = "Just a moo";
-        }
+            useThis = "None";
+            break;
+        };
     };   
     commandPrompt(useThis);
 } 
@@ -69,7 +70,7 @@ function direction(userQuery){
 commands = ['concert-this', 'spotify-this-song', 'movie-this', 'do-what-it-says', 'moo'];
 
 function commandPrompt(title){
-    fs.appendFile('log.txt', '\nCommand - ' + doThis + '\nAdditional Parameter -' + useThis, (err) => {
+    fs.appendFile('log.txt', '\nCommand - ' + doThis + '\nAdditional Parameter -' + title, (err) => {
         if (err) throw err;
       });
       var toDo='';
@@ -78,9 +79,9 @@ function commandPrompt(title){
         case commands[0]:{
             toDo = 'Concert';
             axios.get("https://rest.bandsintown.com/artists/" + title + "/events?app_id=18982016-4489-49ce-9678-32dce1606300&date=upcoming").then(function(response) {
-                for (var i = 0; i<response.data.length; i++){
-                    console.log("Name of the Venue: " + response.data[i].venue.name + "\nVenue Location: " + response.data[i].venue.city + ", " + response.data[i].venue.region + "\nDate of Event: " + moment(response.data[i].datetime).format("MM-DD-YYYY"));
-                    console.log('=================');
+                foo = printConcert(response.data);
+                for (i=0; i<foo.length; i++){
+                    append(toDo, foo[i]);
                 }
             });
             break;
@@ -121,11 +122,22 @@ function commandPrompt(title){
             break;
         }
         case commands[3]:{
-           var theRandomThings = fs.readFile("random.txt", "utf-8", function(err, things){
-               console.log(things);
+            var randomArray = []; 
+            var commandArray = [];
+            var theRandomThings = fs.readFile("random.txt", "utf-8", function(err, things){
                 theRandomThings = things.toString();
-           });
-           console.log(theRandomThings);
+                randomArray = theRandomThings.split('\n');
+                var index = Math.floor(Math.random()*randomArray.length);           
+                commandArray = randomArray[index].split(' ');
+                doThis = commandArray.shift();
+                var searchString = commandArray.join(' ');
+                var useThis = searchString;
+                fs.appendFile('log.txt', '\nThe computer randomly picked - ' + doThis + ': ' + useThis + ' from the random.txt file. \nComputer Autofill: ', (err) => {
+                    if (err) throw err;
+                  });
+                commandPrompt(useThis);
+            })
+            break;
         }
         case commands[4]:{
             toDo = 'Cow sanity check!'
@@ -150,6 +162,17 @@ function printSong(songObject){
     var songFoo = 'Artist(s): '+ artists + "\nSong's Name: " + songObject.name +'\nPreview Link from Spotify: ' + songObject.external_urls.spotify + '\nAlbum: ' + songObject.album.name;
     console.log(songFoo);
     return songFoo;
+}
+
+function printConcert(concertObject){
+    var concertFoo = [];
+    for (var i = 0; i<concertObject.length; i++){
+        var concertItem = "Name of the Venue: " + concertObject[i].venue.name + "\nVenue Location: " + concertObject[i].venue.city + ", " + concertObject[i].venue.region + "\nDate of Event: " + moment(concertObject[i].datetime).format("MM-DD-YYYY");
+        concertFoo.push(concertItem);
+        console.log(concertItem);
+        console.log('~~~~');
+    }
+    return concertFoo;
 }
 
 function append(thing, returnData){
